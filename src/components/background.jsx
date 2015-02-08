@@ -7,10 +7,10 @@ module.exports = React.createClass({
   render: function() {
     var style = {
       backgroundImage: this.props.gradient,
-      minHeight: '70vh'
+      height: '80vh'
     };
     return (
-      <div style={style} className="p3">
+      <div style={style}>
         {this.props.children}
       </div>
     )

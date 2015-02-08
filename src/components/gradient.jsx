@@ -142,7 +142,13 @@ module.exports = React.createClass({
     return (
       <div>
         <Background {...this.props} gradient={this.state.gradient}>
-          {this.props.children}
+          <div className="flex flex-column full-height">
+            <div className="p3">
+              {this.props.children}
+            </div>
+            <div className="flex-auto"></div>
+            <pre className="h5 right-align m0 white">background-image: {this.state.gradient};</pre>
+          </div>
         </Background>
         <form className="sm-flex" onSubmit={this.handleSubmit}>
           <div className="sm-col-4 px2">
@@ -217,11 +223,6 @@ module.exports = React.createClass({
             </fieldset>
           </div>
         </form>
-        <hr/>
-        <div className="px2 py3">
-          <h3>CSS Syntax</h3>
-          <pre>background-image: {this.state.gradient};</pre>
-        </div>
       </div>
     )
 
