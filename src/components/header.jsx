@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-//var Input = require('./input.jsx');
 
 module.exports = React.createClass({
 
