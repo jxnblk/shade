@@ -14,11 +14,11 @@ module.exports = React.createClass({
       baseL: 0,
       saturate: 0,
       lighten: 0,
-      hueShift: 0,
+      hueShift: -130,
       angle: -90,
-      from: '#00ccff',
-      to: '#00ccff',
-      gradient: 'linear-gradient(90deg, #00ccff, #00ccff)'
+      from: '#f6ff00',
+      to: '#ff00a1',
+      gradient: 'linear-gradient(90deg, #f6ff00, #ff00a1)'
     }
   },
 
@@ -91,6 +91,7 @@ module.exports = React.createClass({
   updateColors: function() {
     var base, from, to;
     var base = Color(this.state.base);
+    if (!base) return false;
     from = base.clone()
       .rotate(Number(this.state.hueShift))
       .saturate(this.state.saturate)
@@ -106,6 +107,16 @@ module.exports = React.createClass({
       to: to,
       gradient: this.linearGradient(this.state.angle, from, to)
     });
+  },
+
+
+  handleSubmit: function(e) {
+    var base = e.target[1].value || null;
+    e.preventDefault();
+    if (base) {
+      this.setState({ base: base });
+    }
+    this.updateColors();
   },
 
   componentDidMount: function() {
@@ -133,7 +144,7 @@ module.exports = React.createClass({
         <Background {...this.props} gradient={this.state.gradient}>
           {this.props.children}
         </Background>
-        <form className="sm-flex">
+        <form className="sm-flex" onSubmit={this.handleSubmit}>
           <div className="sm-col-4 px2">
             <fieldset className="fieldset-reset py2">
               <div className="flex flex-center mb2">
@@ -144,7 +155,7 @@ module.exports = React.createClass({
                   onChange={this.changeBase}
                   className="m0 flex-auto field-light" />
               </div>
-              <div className="sm-flex mxn2">
+              <div className="sm-flex mxn2 no-select">
                 <div className="flex-auto px2">
                   <label className="h5 bold block">Hue {hue}</label>
                   <input type="range" value={hue}
@@ -175,11 +186,11 @@ module.exports = React.createClass({
           <div className="flex-auto"></div>
           <div className="sm-col-7 px2 py2">
             <hr className="sm-hide"/>
-            <fieldset className="fieldset-reset">
-              <legend className="h3 bold">Gradient Spread</legend>
+            <fieldset className="fieldset-reset no-select">
+              <legend className="h3 bold lh-form mb2">Gradient Spread</legend>
               <div className="sm-flex mxn2">
                 <div className="flex-auto px2">
-                  <label className="bold block">Hue Shift {hueShift}</label>
+                  <label className="h5 bold block">Hue Shift {hueShift}</label>
                   <input type="range" value={hueShift}
                     min="-180" max="180"
                     onBlur={this.changeHueShift}
@@ -187,7 +198,7 @@ module.exports = React.createClass({
                     className="full-width dark-gray range-light" />
                 </div>
                 <div className="flex-auto px2">
-                  <label className="bold block">Saturate {saturate}</label>
+                  <label className="h5 bold block">Saturate {saturate}</label>
                   <input type="range" value={saturate}
                     min="-1" max="1" step="0.01"
                     onBlur={this.changeSaturate}
@@ -195,7 +206,7 @@ module.exports = React.createClass({
                     className="full-width dark-gray range-light" />
                 </div>
                 <div className="flex-auto px2">
-                  <label className="bold block">Lighten {lighten}</label>
+                  <label className="h5 bold block">Lighten {lighten}</label>
                   <input type="range" value={lighten}
                     min="-1" max="1" step="0.01"
                     onBlur={this.changeLighten}
@@ -207,7 +218,10 @@ module.exports = React.createClass({
           </div>
         </form>
         <hr/>
-        <pre>{this.state.gradient}</pre>
+        <div className="px2 py3">
+          <h3>CSS Syntax</h3>
+          <pre>background-image: {this.state.gradient};</pre>
+        </div>
       </div>
     )
 
