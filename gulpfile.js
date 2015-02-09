@@ -1,8 +1,6 @@
 
 var gulp = require('gulp');
 var rename = require('gulp-rename');
-var basswork = require('gulp-basswork');
-var minifyCss = require('gulp-minify-css');
 var browserify = require('browserify');
 var transform = require('vinyl-transform');
 var uglify = require('gulp-uglify');
