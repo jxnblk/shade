@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var _ = require('lodash');
 var Color = require('color');
 var Background = require('./background.jsx');
 var Header = require('./header.jsx');
@@ -9,7 +10,16 @@ var BaseColor = require('./base-color.jsx');
 module.exports = React.createClass({
 
   getInitialState: function() {
-    return {
+    var obj = {};
+    try {
+      var params = window.location.search;
+      obj = this.parseQueryString(params);
+      if (obj.base) {
+        obj.base = '#' + obj.base;
+      }
+    } catch(e) {
+    }
+    _.defaults(obj, {
       base: '#00ccff',
       saturate: 0,
       lighten: 0,
@@ -18,7 +28,8 @@ module.exports = React.createClass({
       from: '#f6ff00',
       to: '#ff00a1',
       gradient: 'linear-gradient(-90deg, #f6ff00, #ff00a1)'
-    }
+    });
+    return obj
   },
 
   changeBase: function(val) {
@@ -47,6 +58,35 @@ module.exports = React.createClass({
     return 'linear-gradient(' + deg + 'deg, ' + from + ', ' + to + ')';
   },
 
+  queryString: function(obj) {
+    var qs = _.reduce(obj, function(result, value, key) {
+      if (typeof value == 'string') { value = value.replace('#', ''); }
+      return result += key + '=' + value + '&';
+    }, '').slice(0, -1);
+    return qs;
+  },
+
+  parseQueryString: function(str) {
+    var pairs,
+        obj = {};
+    str = str.replace('?', '');
+    pairs = str.split('&');
+    pairs.forEach(function(pair) {
+      var keyVal = pair.split('=');
+      obj[keyVal[0]] = keyVal[1];
+    });
+    return obj;
+  },
+
+  updateUrl: _.debounce(function() {
+    var qs = this.queryString({
+      base: this.state.base,
+      hueShift: this.state.hueShift,
+      saturate: this.state.saturate,
+      lighten: this.state.lighten
+    });
+    window.history.pushState(this.state , '', '?' + qs);
+  }, 200),
 
   updateColors: function() {
     var base, from, to;
@@ -67,6 +107,7 @@ module.exports = React.createClass({
       to: to,
       gradient: this.linearGradient(this.state.angle, from, to)
     });
+    this.updateUrl();
   },
 
 
