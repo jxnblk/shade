@@ -131,21 +131,21 @@ module.exports = React.createClass({
         <Background {...this.props} gradient={this.state.gradient}>
           <Header {...this.props} />
         </Background>
-        <div className="sm-flex">
-          <div className="sm-col-4 px2">
+        <div className="md-flex">
+          <div className="md-col-6 lg-col-5 px2">
             <BaseColor {...this.props}
               base={base}
               changeBase={this.changeBase}
               updateColors={this.updateColors}/>
           </div>
           <div className="flex-auto"></div>
-          <form className="sm-col-7 px2 py2">
+          <form className="md-col-6 px2 py2">
             <hr className="sm-hide"/>
             <fieldset className="fieldset-reset no-select">
-              <legend className="h3 bold lh-form mb2">Gradient Spread</legend>
+              <legend className="h4 bold lh-form mb2">Gradient Spread</legend>
               <div className="sm-flex mxn2">
                 <div className="flex-auto px2">
-                  <label className="h5 bold block">Hue Shift {hueShift}</label>
+                  <label className="h5 bold block">Hue Shift {hueShift}&deg;</label>
                   <input type="range" value={hueShift}
                     min="-180" max="180"
                     onBlur={this.changeHueShift}

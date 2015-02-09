@@ -95,7 +95,7 @@ module.exports = React.createClass({
           </div>
           <div className="sm-flex mxn2 no-select">
             <div className="flex-auto px2">
-              <label className="h5 bold block">Hue {hue}</label>
+              <label className="h5 bold block">Hue {hue}&deg;</label>
               <input type="range" value={hue}
                 min="0" max="360"
                 onBlur={this.changeHue}
