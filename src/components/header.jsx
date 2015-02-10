@@ -14,7 +14,7 @@ module.exports = React.createClass({
           </h1>
           <p className="m0">{this.props.description}</p>
         </div>
-        <a href="https://twitter.com/intent/tweet?text=Throw some shade&amp;url=http://jxnblk.com/shade&amp;via=jxnblk"
+        <a href="https://twitter.com/intent/tweet?text=Mathematically derived gradient explorer&amp;url=http://jxnblk.com/shade&amp;via=jxnblk"
           className="button button-nav-dark bg-darken-2 rounded">
             Tweet
         </a>
