@@ -1,5 +1,5 @@
 # Shade
-Gradient explorer
+Mathematically derived gradient explorer
 
 http://jxnblk.com/shade
 

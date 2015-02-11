@@ -1,7 +1,7 @@
 {
   "name": "shade",
   "version": "1.0.0",
-  "description": "Gradient explorer",
+  "description": "Mathematically derived gradient explorer",
   "author": "Brent Jackson",
   "license": "MIT",
   "dependencies": {},
@@ -25,8 +25,9 @@
   },
   "keywords": [
     "React",
-    "Boilerplate",
-    "Browserify"
+    "Design Tool",
+    "Gradients",
+    "Color"
   ],
   "browserify": {
     "transform": [
