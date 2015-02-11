@@ -18,7 +18,6 @@ module.exports = React.createClass({
     this.setState({ base: e.target.value });
     this.updateHSL();
     this.props.changeBase(this.state.base);
-    this.props.updateColors();
   },
 
   changeHue: function(e) {
@@ -59,7 +58,6 @@ module.exports = React.createClass({
     base = Color(hsl).hexString();
     this.setState({ base: base });
     this.props.changeBase(this.state.base);
-    this.props.updateColors();
   },
 
   handleSubmit: function(e) {
@@ -70,7 +68,6 @@ module.exports = React.createClass({
     }
     this.updateHSL();
     this.props.changeBase(this.state.base);
-    this.props.updateColors();
   },
 
   componentDidMount: function() {

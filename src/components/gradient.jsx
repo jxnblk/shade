@@ -25,32 +25,29 @@ module.exports = React.createClass({
       lighten: 0,
       hueShift: -130,
       angle: -90,
-      from: '#f6ff00',
-      to: '#ff00a1',
-      gradient: 'linear-gradient(-90deg, #f6ff00, #ff00a1)'
     });
     return obj
   },
 
   changeBase: function(val) {
-    this.setState({ base: val });
-    this.updateColors();
+    this.setState({ base: val }, this.updateUrl);
+    //this.updateUrl();
   },
 
   // Spread
   changeSaturate: function(e) {
-    this.setState({ saturate: e.target.value });
-    this.updateColors();
+    this.setState({ saturate: e.target.value }, this.updateUrl);
+    //this.updateUrl();
   },
 
   changeLighten: function(e) {
-    this.setState({ lighten: e.target.value });
-    this.updateColors();
+    this.setState({ lighten: e.target.value }, this.updateUrl);
+    //this.updateUrl();
   },
 
   changeHueShift: function(e) {
-    this.setState({ hueShift: e.target.value });
-    this.updateColors();
+    this.setState({ hueShift: e.target.value }, this.updateUrl);
+    //this.updateUrl();
   },
 
 
@@ -88,33 +85,6 @@ module.exports = React.createClass({
     window.history.pushState(this.state , '', '?' + qs);
   }, 200),
 
-  updateColors: function() {
-    var base, from, to;
-    var base = Color(this.state.base);
-    if (!base) return false;
-    from = base.clone()
-      .rotate(Number(this.state.hueShift))
-      .saturate(this.state.saturate)
-      .lighten(this.state.lighten)
-      .hexString();
-    to = base.clone()
-      .rotate(-1 * Number(this.state.hueShift))
-      .desaturate(this.state.saturate)
-      .darken(this.state.lighten)
-      .hexString();
-    this.setState({
-      from: from,
-      to: to,
-      gradient: this.linearGradient(this.state.angle, from, to)
-    });
-    this.updateUrl();
-  },
-
-
-  componentDidMount: function() {
-    this.updateColors();
-  },
-
 
   render: function() {
 
@@ -123,20 +93,30 @@ module.exports = React.createClass({
     var lighten = this.state.lighten;
     var hueShift = this.state.hueShift;
     var angle = this.state.angle;
-    var from = this.state.from;
-    var to = this.state.to;
+
+    var baseColor = Color(base);
+    var from = baseColor.clone()
+      .rotate(Number(this.state.hueShift))
+      .saturate(this.state.saturate)
+      .lighten(this.state.lighten)
+      .hexString();
+    var to = baseColor.clone()
+      .rotate(-1 * Number(this.state.hueShift))
+      .desaturate(this.state.saturate)
+      .darken(this.state.lighten)
+      .hexString();
+    var gradient = this.linearGradient(angle, from, to);
 
     return (
       <div>
-        <Background {...this.props} gradient={this.state.gradient}>
+        <Background {...this.props} gradient={gradient}>
           <Header {...this.props} />
         </Background>
         <div className="md-flex">
           <div className="md-col-6 lg-col-5 px2">
             <BaseColor {...this.props}
               base={base}
-              changeBase={this.changeBase}
-              updateColors={this.updateColors}/>
+              changeBase={this.changeBase}/>
           </div>
           <div className="flex-auto"></div>
           <form className="md-col-6 px2 py2">
