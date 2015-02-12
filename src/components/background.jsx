@@ -9,6 +9,8 @@ module.exports = React.createClass({
       backgroundImage: this.props.gradient,
       height: '80vh'
     };
+    var preClass = 'h5 right-align m0 ';
+    preClass += this.props.light ? 'black' : 'white';
     return (
       <div style={style}>
         <div className="flex flex-column full-height">
@@ -16,7 +18,7 @@ module.exports = React.createClass({
             {this.props.children}
           </div>
           <div className="flex-auto"></div>
-          <pre className="h5 right-align m0 white">background-image: {this.props.gradient};</pre>
+          <pre className={preClass}>background-image: {this.props.gradient};</pre>
         </div>
       </div>
     )

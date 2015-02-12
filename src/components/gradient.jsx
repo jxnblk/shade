@@ -31,23 +31,19 @@ module.exports = React.createClass({
 
   changeBase: function(val) {
     this.setState({ base: val }, this.updateUrl);
-    //this.updateUrl();
   },
 
   // Spread
   changeSaturate: function(e) {
     this.setState({ saturate: e.target.value }, this.updateUrl);
-    //this.updateUrl();
   },
 
   changeLighten: function(e) {
     this.setState({ lighten: e.target.value }, this.updateUrl);
-    //this.updateUrl();
   },
 
   changeHueShift: function(e) {
     this.setState({ hueShift: e.target.value }, this.updateUrl);
-    //this.updateUrl();
   },
 
 
@@ -107,10 +103,12 @@ module.exports = React.createClass({
       .hexString();
     var gradient = this.linearGradient(angle, from, to);
 
+    var light = baseColor.light();
+
     return (
       <div>
-        <Background {...this.props} gradient={gradient}>
-          <Header {...this.props} />
+        <Background {...this.props} gradient={gradient} light={light}>
+          <Header {...this.props} light={light} />
         </Background>
         <div className="md-flex">
           <div className="md-col-6 lg-col-5 px2">
