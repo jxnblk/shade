@@ -10,8 +10,8 @@ module.exports = React.createClass({
 
   render: function() {
     var headerClass = 'flex flex-center flex-wrap';
-    var buttonClass = 'button rounded ';
-    buttonClass += this.props.light ? 'button-nav-light black' : 'button-nav-dark bg-darken-2';
+    var buttonClass = 'button rounded button-transparent ';
+    buttonClass += this.props.light ? 'black' : 'bg-darken-2';
     headerClass += this.props.light ? ' black' : ' white';
     return (
       <header className={headerClass}>
