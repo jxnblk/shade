@@ -9,13 +9,13 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var headerClass = 'flex flex-center flex-wrap';
+    var headerClass = 'flex flex-center flex-wrap mxn2';
     var buttonClass = 'button rounded button-transparent ';
     buttonClass += this.props.light ? 'black' : 'bg-darken-2';
     headerClass += this.props.light ? ' black' : ' white';
     return (
       <header className={headerClass}>
-        <div className="flex-auto">
+        <div className="flex-auto px2">
           <h1 className="m0">
             {this.props.name}
             <span className="h4"> v{this.props.version}</span>

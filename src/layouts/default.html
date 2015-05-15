@@ -16,6 +16,25 @@
     .lh-form { line-height: 2.25rem }
     .full-height { height: 100% }
     .black { color: #111 }
+    #carbonads {
+      font-size: 14px;
+      line-height: 1.25;
+      text-align: left;
+      padding: .75em;
+    }
+    #carbonads a, #carbonads a:hover { text-decoration: none; color: inherit }
+    #carbonads span { display: block }
+    #carbonads > span::before, #carbonads > span::after { content: ''; display: table; }
+    #carbonads > span::after { clear: both }
+    .carbon-img { float: left; margin-right: .5em; }
+    .carbon-img > img { display: block }
+    .carbon-text { overflow: hidden }
+    .carbon-poweredby { float: left; margin-top: .25em; opacity: 0.5; }
+    @media (min-width: 40em) {
+      #carbonads {
+        max-width: 320px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -25,11 +44,11 @@
 </div>
 
 <footer class="px2 ">
-  <div class="flex flex-center flex-wrap py3 border-top">
-    <h4 class="m0">Shade</h4>
+  <div class="flex flex-baseline flex-wrap py3 border-top">
+    <h4 class="h5 m0">Shade</h4>
     <a href="//github.com/jxnblk/shade" class="button button-transparent blue">Github</a>
     <div class="flex-auto"></div>
-    <p class="h5 m0">
+    <p class="h5 bold m0">
       Made by <a href="//jxnblk.com">Jxnblk</a>
     </p>
   </div>
