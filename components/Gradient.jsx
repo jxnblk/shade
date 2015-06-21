@@ -2,9 +2,11 @@
 import React from 'react'
 import _ from 'lodash'
 import Color from 'color'
+import qs from 'qs'
 import Background from './Background.jsx'
 import Header from './Header.jsx'
 import BaseColor from './BaseColor.jsx'
+
 
 class Gradient extends React.Component {
 
@@ -15,9 +17,16 @@ class Gradient extends React.Component {
     this.changeLighten = this.changeLighten.bind(this)
     this.changeHueShift = this.changeHueShift.bind(this)
     this.linearGradient = this.linearGradient.bind(this)
-    this.queryString = this.queryString.bind(this)
-    this.parseQueryString = this.parseQueryString.bind(this)
-    this.updateUrl = this.updateUrl.bind(this)
+    this.updateUrl = _.debounce(function() {
+      console.log('updateUrl')
+      let params = qs.stringify({
+        base: this.state.base,
+        hueShift: this.state.hueShift,
+        saturate: this.state.saturate,
+        lighten: this.state.lighten
+      })
+      window.history.pushState(this.state , '', '?' + params)
+    }, 200)
     this.state = {
       base: '#00ccff',
       saturate: 0,
@@ -26,28 +35,6 @@ class Gradient extends React.Component {
       angle: -90
     }
   }
-
-  /*
-  getInitialState () {
-    var obj = {}
-    try {
-      var params = window.location.search
-      obj = this.parseQueryString(params)
-      if (obj.base) {
-        obj.base = '#' + obj.base
-      }
-    } catch(e) {
-    }
-    _.defaults(obj, {
-      base: '#00ccff',
-      saturate: 0,
-      lighten: 0,
-      hueShift: -130,
-      angle: -90,
-    })
-    return obj
-  }
-  */
 
   changeBase (val) {
     this.setState({ base: val }, this.updateUrl)
@@ -69,40 +56,12 @@ class Gradient extends React.Component {
     return 'linear-gradient(' + deg + 'deg, ' + from + ', ' + to + ')'
   }
 
-  queryString (obj) {
-    var qs = _.reduce(obj, function(result, value, key) {
-      if (typeof value == 'string') { value = value.replace('#', '') }
-      return result += key + '=' + value + '&'
-    }, '').slice(0, -1)
-    return qs
-  }
-
-  parseQueryString (str) {
-    var pairs,
-        obj = {}
-    str = str.replace('?', '')
-    pairs = str.split('&')
-    pairs.forEach(function(pair) {
-      var keyVal = pair.split('=')
-      obj[keyVal[0]] = keyVal[1]
-    })
-    return obj
-  }
-
-  updateUrl () {
-    return _.debounce(function() {
-      var qs = this.queryString({
-        base: this.state.base,
-        hueShift: this.state.hueShift,
-        saturate: this.state.saturate,
-        lighten: this.state.lighten
-      })
-      window.history.pushState(this.state , '', '?' + qs)
-    }, 200)
-  }
-
   componentDidMount () {
-    // get params
+    if (typeof window !== 'undefined') {
+      let params = window.location.search.replace(/^\?/, '')
+      let obj = qs.parse(params)
+      this.setState(obj)
+    }
   }
 
   render () {
