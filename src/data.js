@@ -1,11 +1,17 @@
 
-var fs = require('fs');
-var path = require('path');
-var marked = require('marked');
+var pkg = require('../package.json')
 
-var data = require('../package.json');
-var readme = fs.readFileSync(path.join(__dirname, '../README.md'), 'utf8');
-data.readme = marked(readme);
+var data = {
+  name: pkg.name,
+  title: pkg.name,
+  href: '/shade',
+  version: pkg.version,
+  description: pkg.description,
+  keywords: pkg.keywords,
+  links: [
+    { href: '//github.com/jxnblk/shade', text: 'GitHub' }
+  ]
+}
 
-module.exports = data;
+module.exports = data
 
