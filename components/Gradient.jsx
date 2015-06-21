@@ -10,25 +10,6 @@ class Gradient extends React.Component {
 
   constructor () {
     super ()
-    getInitialState () {
-      var obj = {}
-      try {
-        var params = window.location.search
-        obj = this.parseQueryString(params)
-        if (obj.base) {
-          obj.base = '#' + obj.base
-        }
-      } catch(e) {
-      }
-      _.defaults(obj, {
-        base: '#00ccff',
-        saturate: 0,
-        lighten: 0,
-        hueShift: -130,
-        angle: -90,
-      })
-      return obj
-    }
     this.changeBase = this.changeBase.bind(this)
     this.changeSaturate = this.changeSaturate.bind(this)
     this.changeLighten = this.changeLighten.bind(this)
@@ -37,7 +18,36 @@ class Gradient extends React.Component {
     this.queryString = this.queryString.bind(this)
     this.parseQueryString = this.parseQueryString.bind(this)
     this.updateUrl = this.updateUrl.bind(this)
+    this.state = {
+      base: '#00ccff',
+      saturate: 0,
+      lighten: 0,
+      hueShift: 130,
+      angle: -90
+    }
   }
+
+  /*
+  getInitialState () {
+    var obj = {}
+    try {
+      var params = window.location.search
+      obj = this.parseQueryString(params)
+      if (obj.base) {
+        obj.base = '#' + obj.base
+      }
+    } catch(e) {
+    }
+    _.defaults(obj, {
+      base: '#00ccff',
+      saturate: 0,
+      lighten: 0,
+      hueShift: -130,
+      angle: -90,
+    })
+    return obj
+  }
+  */
 
   changeBase (val) {
     this.setState({ base: val }, this.updateUrl)
@@ -91,6 +101,9 @@ class Gradient extends React.Component {
     }, 200)
   }
 
+  componentDidMount () {
+    // get params
+  }
 
   render () {
 

@@ -6,9 +6,8 @@ class BaseColor extends React.Component {
 
   constructor () {
     super ()
-    console.log('this.props.base', this.props.base)
     this.state = {
-      base: this.props.base,
+      base: '#00ccff',
       hue: 0,
       saturation: 0,
       lightness: 0

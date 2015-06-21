@@ -4,9 +4,7 @@ var Root = require('./components/Root.jsx')
 
 if (typeof document !== 'undefined') {
   var initialProps = JSON.parse(document.getElementById('initial-props').innerHTML)
-  Router.run(Routes, Router.HistoryLocation, function (Handler) {
-    React.render(React.createElement(Handler, initialProps), document)
-  })
+  React.render(React.createElement(Root, initialProps), document)
 }
 
 module.exports = function render(locals, callback) {

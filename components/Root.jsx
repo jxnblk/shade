@@ -2,10 +2,8 @@
 import React from 'react'
 import css from '../base.css'
 import ga from '../ga'
-import Background from './Background.jsx'
-import Header from './Header.jsx'
-import BaseColor from './BaseColor.jsx'
-//import Gradient from './Gradient.jsx'
+
+import Gradient from './Gradient.jsx'
 
 class Root extends React.Component {
 
@@ -25,7 +23,7 @@ class Root extends React.Component {
           <style dangerouslySetInnerHTML={{ __html: css }} />
         </head>
         <body>
-          <div>App</div>
+          <Gradient {...this.props} />
           <script
             id='initial-props'
             type='application/json'
