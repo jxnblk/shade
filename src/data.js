@@ -1,5 +1,5 @@
 
-var pkg = require('./package.json')
+var pkg = require('../package.json')
 
 var data = {
   name: pkg.name,

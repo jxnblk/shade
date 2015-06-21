@@ -1,17 +1,24 @@
-/** @jsx React.DOM */
+// Currently unused
 
-var React = require('react');
+import React from 'react'
 
-module.exports = React.createClass({
+class Input extends React.Component {
 
-  render: function() {
+  render () {
     return (
-      <input type="text"
-        className="mb0 field-light"
-        onBlur={this.props.onBlur}
-        valueLink={this.props.valueLink} />
+      <div>
+        <label>
+        </label>
+        <input
+          type="text"
+          className="mb0 field-light"
+          onBlur={this.props.onBlur}
+          valueLink={this.props.valueLink} />
+      </div>
     )
   }
 
-});
+}
+
+export default Input
 

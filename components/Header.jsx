@@ -1,5 +1,6 @@
 
 import React from 'react'
+import TweetButton from './TweetButton.jsx'
 
 class Header extends React.Component {
 
@@ -11,17 +12,16 @@ class Header extends React.Component {
 
     return (
       <header className={headerClass}>
-        <div className='flex-auto px2'>
+        <div className='flex-auto px2 mb2'>
           <h1 className='m0'>
             {this.props.name}
             <span className='h4'> v{this.props.version}</span>
           </h1>
           <p className='m0'>{this.props.description}</p>
         </div>
-        <a href='https://twitter.com/intent/tweet?text=Mathematically derived gradient explorer&amp;url=http://jxnblk.com/shade&amp;via=jxnblk'
-          className={buttonClass}>
-            Tweet
-        </a>
+        <div className='px2'>
+          <TweetButton {...this.props} />
+        </div>
       </header>
     )
   }

@@ -1,8 +1,8 @@
 
 import React from 'react'
 import { Footer } from 'blk'
-import css from '../base.css'
-import ga from '../ga'
+import css from '../src/base.css'
+import ga from '../src/ga'
 import Gradient from './Gradient.jsx'
 
 class Root extends React.Component {

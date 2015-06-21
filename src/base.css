@@ -7,6 +7,7 @@
 
 .p0 { padding: 0 }
 .no-border { border: 0 }
+.no-select { user-select: none }
 
 :root {
 }
