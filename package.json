@@ -8,6 +8,10 @@
   "devDependencies": {
     "babel-core": "^5.6.1",
     "babel-loader": "^5.1.4",
+    "basscss-base-forms": "^2.0.0-beta.2",
+    "basscss-color-forms": "^3.0.0-beta.0",
+    "basscss-color-input-range": "^1.0.0-beta.0",
+    "basscss-input-range": "^2.0.0-beta.0",
     "blk": "^3.0.3",
     "brfs": "^1.3.0",
     "browserify": "^8.0.3",

@@ -1,8 +1,8 @@
 
 import React from 'react'
+import { Footer } from 'blk'
 import css from '../base.css'
 import ga from '../ga'
-
 import Gradient from './Gradient.jsx'
 
 class Root extends React.Component {
@@ -24,6 +24,9 @@ class Root extends React.Component {
         </head>
         <body>
           <Gradient {...this.props} />
+          <div className='px2'>
+            <Footer {...this.props} />
+          </div>
           <script
             id='initial-props'
             type='application/json'

@@ -141,9 +141,11 @@ class Gradient extends React.Component {
           </div>
           <div className='flex-auto'></div>
           <form className='md-col-6 px2 py2'>
-            <hr className='sm-hide'/>
             <fieldset className='fieldset-reset no-select'>
-              <legend className='h4 bold lh-form mb2'>Gradient Spread</legend>
+              <legend className='h4 bold mb2'
+                style={{ lineHeight: '2.25rem' }}>
+                Gradient Spread
+              </legend>
               <div className='sm-flex mxn2'>
                 <div className='flex-auto px2'>
                   <label className='h5 bold block'>Hue Shift {hueShift}&deg;</label>
@@ -151,7 +153,7 @@ class Gradient extends React.Component {
                     min='-180' max='180'
                     onBlur={this.changeHueShift}
                     onChange={this.changeHueShift}
-                    className='full-width dark-gray range-light' />
+                    className='col-12 dark-gray range-light' />
                 </div>
                 <div className='flex-auto px2'>
                   <label className='h5 bold block'>Saturate {saturate}</label>
@@ -159,7 +161,7 @@ class Gradient extends React.Component {
                     min='-1' max='1' step='0.01'
                     onBlur={this.changeSaturate}
                     onChange={this.changeSaturate}
-                    className='full-width dark-gray range-light' />
+                    className='col-12 dark-gray range-light' />
                 </div>
                 <div className='flex-auto px2'>
                   <label className='h5 bold block'>Lighten {lighten}</label>
@@ -167,7 +169,7 @@ class Gradient extends React.Component {
                     min='-1' max='1' step='0.01'
                     onBlur={this.changeLighten}
                     onChange={this.changeLighten}
-                    className='full-width dark-gray range-light' />
+                    className='col-12 dark-gray range-light' />
                 </div>
               </div>
             </fieldset>

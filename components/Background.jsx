@@ -1,15 +1,16 @@
 
 import React from 'react'
-import Ad from './Ad.jsx'
+import { CarbonAd } from 'blk'
 
 class Background extends React.Component {
 
   render () {
     let style = {
       backgroundImage: this.props.gradient,
-      minHeight: '80vh'
+      minHeight: '80vh',
+      color: this.props.light ? 'black' : 'white'
     }
-    let preClass = 'h5 right-align m0 '
+    let preClass = 'h5 right-align p1 m0 '
     preClass += this.props.light ? 'black' : 'white'
 
     return (
@@ -18,8 +19,8 @@ class Background extends React.Component {
           {this.props.children}
         </div>
         <div className='flex-auto'></div>
-        <div className='right-align'>
-          <Ad light={this.props.light} />
+        <div className='p1 right-align'>
+          <CarbonAd />
         </div>
         <pre className={preClass}>background-image: {this.props.gradient};</pre>
       </div>

@@ -90,14 +90,14 @@ class BaseColor extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <fieldset className='fieldset-reset py2'>
+        <fieldset className='fieldset-reset py2 '>
           <div className='flex flex-center mb2'>
             <label className='h4 bold flex-none mr2'>Base Color</label>
             <input type='text'
               value={base}
               onBlur={this.changeBase}
               onChange={this.changeBase}
-              className='m0 flex-auto field-light' />
+              className='m0 flex-auto field xfield-light' />
           </div>
           <div className='sm-flex mxn2 no-select'>
             <div className='flex-auto px2'>
@@ -106,7 +106,7 @@ class BaseColor extends React.Component {
                 min='0' max='360'
                 onBlur={this.changeHue}
                 onChange={this.changeHue}
-                className='full-width dark-gray range-light' />
+                className='col-12 dark-gray range-light' />
             </div>
             <div className='flex-auto px2'>
               <label className='h5 bold block'>Saturation {saturation}</label>
@@ -114,7 +114,7 @@ class BaseColor extends React.Component {
                 min='0' max='100'
                 onBlur={this.changeSaturation}
                 onChange={this.changeSaturation}
-                className='full-width dark-gray range-light' />
+                className='col-12 dark-gray range-light' />
             </div>
             <div className='flex-auto px2'>
               <label className='h5 bold block'>Lightness {lightness}</label>
@@ -122,7 +122,7 @@ class BaseColor extends React.Component {
                 min='0' max='100'
                 onBlur={this.changeLightness}
                 onChange={this.changeLightness}
-                className='full-width dark-gray range-light' />
+                className='col-12 dark-gray range-light' />
             </div>
           </div>
         </fieldset>
