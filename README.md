@@ -10,3 +10,5 @@ Install dependencies
 
 Start development
 ```npm start```
+
+[MIT License](LICENSE.md)
